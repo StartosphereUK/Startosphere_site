@@ -97,62 +97,105 @@
             <h2 class="text-4xl font-bold text-navy-900 text-center mb-16">
                 Service Categories
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Categories Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-4">
 
-                <!-- Accounting Card -->
-                <div class="category-card glass-card p-8 rounded-2xl hover:transform hover:scale-105 transition-all cursor-pointer"
-                    onclick="window.location.href='browse.html?category=accounting'">
+                <!-- 1. Accounting -->
+                <a href="browse.html?category=accounting"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-green-400/50 shadow-xl group cursor-pointer h-[320px]">
                     <div
-                        class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-green-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
                             </path>
                         </svg>
                     </div>
                     <h3 class="text-2xl font-bold text-navy-900 mb-2">Accounting</h3>
-                    <p class="text-gray-600">Expert financial management and bookkeeping services</p>
-                    <div class="mt-4 text-blue-600 font-semibold">12 Providers →</div>
-                </div>
+                    <p class="text-gray-600 text-sm">Financial management & bookkeeping</p>
+                </a>
 
-                <!-- Legal Card -->
-                <div class="category-card glass-card p-8 rounded-2xl hover:transform hover:scale-105 transition-all cursor-pointer"
-                    onclick="window.location.href='browse.html?category=legal'">
+                <!-- 2. Ancillary -->
+                <a href="browse.html?category=ancillary"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-slate-400/50 shadow-xl group cursor-pointer h-[320px]">
                     <div
-                        class="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-20 h-20 bg-gradient-to-br from-slate-400 to-gray-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-gray-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3">
+                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
                             </path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-navy-900 mb-2">Legal</h3>
-                    <p class="text-gray-600">Startup lawyers and legal consultation experts</p>
-                    <div class="mt-4 text-blue-600 font-semibold">8 Providers →</div>
-                </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-2">Ancillary</h3>
+                    <p class="text-gray-600 text-sm">Cleaning & Facilities</p>
+                </a>
 
-                <!-- IT Services Card -->
-                <div class="category-card glass-card p-8 rounded-2xl hover:transform hover:scale-105 transition-all cursor-pointer"
-                    onclick="window.location.href='browse.html?category=it'">
+                <!-- 3. Fundraising -->
+                <a href="browse.html?category=fundraising"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-yellow-400/50 shadow-xl group cursor-pointer h-[320px]">
                     <div
-                        class="w-16 h-16 bg-gradient-to-br from-purple-400 to-violet-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-yellow-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-2">Fundraising</h3>
+                    <p class="text-gray-600 text-sm">VCs & Investors</p>
+                </a>
+
+                <!-- 4. HR & Hiring -->
+                <a href="browse.html?category=hr"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-orange-400/50 shadow-xl group cursor-pointer h-[320px]">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-orange-400 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-2">HR & Hiring</h3>
+                    <p class="text-gray-600 text-sm">Recruitment & Payroll</p>
+                </a>
+
+                <!-- 5. IT Services -->
+                <a href="browse.html?category=it"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-purple-400/50 shadow-xl group cursor-pointer h-[320px]">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-purple-400 to-violet-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
                             </path>
                         </svg>
                     </div>
                     <h3 class="text-2xl font-bold text-navy-900 mb-2">IT Services</h3>
-                    <p class="text-gray-600">Tech infrastructure and development support</p>
-                    <div class="mt-4 text-blue-600 font-semibold">15 Providers →</div>
-                </div>
+                    <p class="text-gray-600 text-sm">Tech & DevOps</p>
+                </a>
 
-                <!-- Marketing Card -->
-                <div class="category-card glass-card p-8 rounded-2xl hover:transform hover:scale-105 transition-all cursor-pointer"
-                    onclick="window.location.href='browse.html?category=marketing'">
+                <!-- 6. Legal -->
+                <a href="browse.html?category=legal"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-blue-400/50 shadow-xl group cursor-pointer h-[320px]">
                     <div
-                        class="w-16 h-16 bg-gradient-to-br from-pink-400 to-rose-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-20 h-20 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-2">Legal</h3>
+                    <p class="text-gray-600 text-sm">Contracts & IP</p>
+                </a>
+
+                <!-- 7. Marketing -->
+                <a href="browse.html?category=marketing"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-pink-400/50 shadow-xl group cursor-pointer h-[320px]">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-pink-400 to-rose-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-pink-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -160,9 +203,23 @@
                         </svg>
                     </div>
                     <h3 class="text-2xl font-bold text-navy-900 mb-2">Marketing</h3>
-                    <p class="text-gray-600">Growth marketing and brand strategy specialists</p>
-                    <div class="mt-4 text-blue-600 font-semibold">10 Providers →</div>
-                </div>
+                    <p class="text-gray-600 text-sm">Growth Strategy</p>
+                </a>
+
+                <!-- 8. Real Estate -->
+                <a href="browse.html?category=estate"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-teal-400/50 shadow-xl group cursor-pointer h-[320px]">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-teal-400 to-cyan-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-teal-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-2">Real Estate</h3>
+                    <p class="text-gray-600 text-sm">Office Space & Leases</p>
+                </a>
 
             </div>
         </div>

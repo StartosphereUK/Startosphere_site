@@ -196,3 +196,7 @@ document.querySelectorAll('.provider-card, .category-card').forEach(card => {
 // Console welcome message
 console.log('%c🚀 Welcome to Startosphere! ', 'background: #2C3E50; color: white; font-size: 16px; padding: 10px; border-radius: 5px;');
 console.log('%cConnecting startups with the services they need to succeed.', 'color: #3B82F6; font-size: 12px;');
+
+
+
+

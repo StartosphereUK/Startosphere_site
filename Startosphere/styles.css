@@ -352,3 +352,31 @@ select:disabled {
         transform: rotate(360deg);
     }
 }
+
+/* --- Spiral Carousel 3D Styles --- */
+.spiral-wrapper {
+    perspective: 1200px;
+}
+
+.spiral-scene {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+}
+
+.spiral-carousel {
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+    /* "Creamy" Ease */
+}
+
+.spiral-item {
+    backface-visibility: visible;
+    transition: transform 0.3s ease;
+}
+
+.spiral-item:hover {
+    filter: brightness(1.1);
+    z-index: 10;
+}
