@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Profile - Startosphere</title>
+    <meta name="description" content="View detailed information about service providers on Startosphere.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="font-poppins bg-gradient-to-br from-slate-50 via-gray-100 to-slate-100 min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 md:h-24">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="logo.png" alt="Startosphere Logo" class="h-48 md:h-60">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="browse.html" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">Browse
+                        Providers</a>
+                    <a href="submit.html" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">Submit
+                        Service</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-navy-900 font-semibold hover:text-blue-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-300 hover:bg-blue-50 rounded-md">Home</a>
+                <a href="browse.html" class="block px-3 py-2 text-gray-300 hover:bg-blue-50 rounded-md">Browse
+                    Providers</a>
+                <a href="submit.html" class="block px-3 py-2 text-gray-300 hover:bg-blue-50 rounded-md">Submit
+                    Service</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Header -->
+    <section class="pt-32 pb-12 px-4">
+        <div class="max-w-5xl mx-auto">
+            <a href="browse.html"
+                class="inline-flex items-center text-purple-400 hover:text-purple-300 mb-8 transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                Back to Browse
+            </a>
+
+            <div class="glass-card p-8 rounded-3xl">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <!-- Logo -->
+                    <div class="flex-shrink-0">
+                        <div
+                            class="w-32 h-32 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center text-white text-5xl font-bold">
+                            FC
+                        </div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="flex-1">
+                        <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h1 class="text-4xl font-bold text-navy-900 mb-2">FinanceCore Solutions</h1>
+                                <span
+                                    class="inline-block px-4 py-2 bg-green-500/20 text-green-600 rounded-full text-sm font-semibold">Accounting</span>
+                            </div>
+                            <button
+                                class="px-8 py-3 bg-navy-900 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-navy-900/50 transition-all transform hover:scale-105">
+                                Contact Provider
+                            </button>
+                        </div>
+
+                        <p class="text-xl text-gray-600 mb-6">
+                            Expert accounting and bookkeeping for early-stage startups. CFO advisory services available.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-600">San Francisco, CA</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                    </path>
+                                </svg>
+                                <span class="text-navy-900 font-semibold">4.9</span>
+                                <span class="text-gray-600">(24 reviews)</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                <span class="text-gray-600">5+ years experience</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="pb-20 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- Left Column - Main Info -->
+                <div class="lg:col-span-2 space-y-8">
+
+                    <!-- About Section -->
+                    <div class="glass-card p-8 rounded-2xl">
+                        <h2 class="text-3xl font-bold text-navy-900 mb-6">About</h2>
+                        <div class="text-gray-600 space-y-4">
+                            <p>
+                                FinanceCore Solutions specializes in providing comprehensive accounting and financial
+                                services tailored specifically for early-stage startups and growing tech companies.
+                            </p>
+                            <p>
+                                Our team of experienced CPAs and financial advisors understands the unique challenges
+                                that startups face. We offer flexible, scalable solutions that grow with your business,
+                                from basic bookkeeping to full CFO advisory services.
+                            </p>
+                            <p>
+                                We've helped over 100 startups manage their finances, secure funding, and achieve
+                                sustainable growth. Our startup-friendly pricing and deep understanding of the tech
+                                ecosystem make us the perfect partner for your financial journey.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Services Section -->
+                    <div class="glass-card p-8 rounded-2xl">
+                        <h2 class="text-3xl font-bold text-navy-900 mb-6">Services Offered</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex items-start gap-3">
+                                <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <div>
+                                    <h3 class="text-navy-900 font-semibold mb-1">Bookkeeping</h3>
+                                    <p class="text-gray-500 text-sm">Monthly financial record management</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <div>
+                                    <h3 class="text-navy-900 font-semibold mb-1">Tax Planning</h3>
+                                    <p class="text-gray-500 text-sm">Strategic tax optimization</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <div>
+                                    <h3 class="text-navy-900 font-semibold mb-1">CFO Advisory</h3>
+                                    <p class="text-gray-500 text-sm">Part-time CFO services</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <div>
+                                    <h3 class="text-navy-900 font-semibold mb-1">Financial Modeling</h3>
+                                    <p class="text-gray-500 text-sm">Projections and forecasting</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <div>
+                                    <h3 class="text-navy-900 font-semibold mb-1">Fundraising Support</h3>
+                                    <p class="text-gray-500 text-sm">Investor-ready financials</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <div>
+                                    <h3 class="text-navy-900 font-semibold mb-1">Payroll Management</h3>
+                                    <p class="text-gray-500 text-sm">Employee payment processing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews Section -->
+                    <div class="glass-card p-8 rounded-2xl">
+                        <h2 class="text-3xl font-bold text-navy-900 mb-6">Client Reviews</h2>
+                        <div class="space-y-6">
+
+                            <!-- Review 1 -->
+                            <div class="border-b border-gray-200 pb-6">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="flex">
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 mb-3">
+                                    "FinanceCore has been instrumental in helping us manage our finances during our seed
+                                    stage. Their CFO advisory service gave us the insights we needed to make smart
+                                    decisions."
+                                </p>
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full flex items-center justify-center text-white font-semibold">
+                                        SK
+                                    </div>
+                                    <div>
+                                        <p class="text-navy-900 font-semibold">Sarah Kim</p>
+                                        <p class="text-gray-500 text-sm">CEO, TechFlow</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Review 2 -->
+                            <div class="border-b border-gray-200 pb-6">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="flex">
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600 mb-3">
+                                    "Professional, responsive, and truly understands the startup world. They helped us
+                                    prepare our financials for our Series A and made the process seamless."
+                                </p>
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full flex items-center justify-center text-white font-semibold">
+                                        MP
+                                    </div>
+                                    <div>
+                                        <p class="text-navy-900 font-semibold">Michael Patel</p>
+                                        <p class="text-gray-500 text-sm">Founder, DataSync</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column - Sidebar -->
+                <div class="space-y-6">
+
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold text-navy-900 mb-4">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-1" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Email</p>
+                                    <p class="text-navy-900">contact@financecore.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-1" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                    </path>
+                                </svg>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Phone</p>
+                                    <p class="text-navy-900">(415) 555-0123</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-1" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                                    </path>
+                                </svg>
+                                <div>
+                                    <p class="text-gray-500 text-sm">Website</p>
+                                    <p class="text-navy-900">www.financecore.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Specialties Card -->
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold text-navy-900 mb-4">Specialties</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">SaaS</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Fintech</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">E-commerce</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Seed
+                                Stage</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Series
+                                A</span>
+                        </div>
+                    </div>
+
+                    <!-- Stats Card -->
+                    <div class="glass-card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold text-navy-900 mb-4">Quick Stats</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-gray-500 text-sm mb-1">Clients Served</p>
+                                <p class="text-2xl font-bold text-navy-900">100+</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm mb-1">Years in Business</p>
+                                <p class="text-2xl font-bold text-navy-900">5+</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500 text-sm mb-1">Response Time</p>
+                                <p class="text-2xl font-bold text-navy-900">
+                                    < 24hrs</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="text-2xl font-bold bg-gradient-to-r text-navy-900 mb-4">
+                Startosphere
+            </div>
+            <p class="text-gray-400 mb-6">
+                Connecting startups with the services they need to succeed.
+            </p>
+            <div class="flex justify-center space-x-6 text-gray-400">
+                <a href="index.html" class="hover:text-purple-400 transition-colors">Home</a>
+                <a href="browse.html" class="hover:text-purple-400 transition-colors">Browse</a>
+                <a href="submit.html" class="hover:text-purple-400 transition-colors">Submit Service</a>
+            </div>
+            <p class="text-gray-500 mt-8 text-sm">
+                © 2026 Startosphere. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
