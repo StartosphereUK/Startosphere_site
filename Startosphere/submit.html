@@ -17,6 +17,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init(9lNuvNIsjReyeXFQQ);
+        })();
+    </script>
+
     <!-- Custom Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -129,7 +138,7 @@
                                     </label>
                                     <input type="text" id="location" name="location" required
                                         class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
-                                        placeholder="City, State">
+                                        placeholder="London, UK">
                                 </div>
 
                                 <div>
@@ -176,7 +185,7 @@
                                     </label>
                                     <input type="tel" id="phone" name="phone" required
                                         class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
-                                        placeholder="(555) 123-4567">
+                                        placeholder="07700 900000">
                                 </div>
                             </div>
 
@@ -184,9 +193,9 @@
                                 <label for="website" class="block text-sm font-semibold text-gray-300 mb-2">
                                     Website
                                 </label>
-                                <input type="url" id="website" name="website"
+                                <input type="text" id="website" name="website"
                                     class="w-full bg-slate-800/50 border border-purple-500/30 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
-                                    placeholder="https://www.yourcompany.com">
+                                    placeholder="yourcompany.com (Optional)">
                             </div>
 
                         </div>

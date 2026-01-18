@@ -121,15 +121,48 @@ if (document.getElementById('submit-form')) {
             data[key] = value;
         });
 
-        // Log form data (in a real app, this would be sent to a server)
-        console.log('Form submitted with data:', data);
+        // Show loading state
+        const submitBtn = submitForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerText;
+        submitBtn.innerText = 'Sending...';
+        submitBtn.disabled = true;
 
-        // Show success message
-        submitForm.style.display = 'none';
-        successMessage.classList.remove('hidden');
+        // Prepare parameters for EmailJS
+        const templateParams = {
+            company_name: data['company-name'],
+            category: data['category'],
+            description: data['description'],
+            location: data['location'],
+            years_experience: data['years-experience'],
+            contact_name: data['contact-name'],
+            email: data['email'],
+            phone: data['phone'],
+            website: data['website'] || '',
+            services: data['services'],
+            specialties: data['specialties'],
+            clients_served: data['clients-served'],
+            additional_info: data['additional-info'],
+            // Create a JSON string block for the Admin Portal
+            admin_data_block: JSON.stringify(data)
+        };
 
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Send via EmailJS (Silent Submission)
+        // REPLACE WITH YOUR SERVICE ID and TEMPLATE ID
+        emailjs.send(service_g66pmd8, template_on3xoda, templateParams)
+            .then(function () {
+                console.log('SUCCESS!');
+                // Show success message
+                submitForm.style.display = 'none';
+                successMessage.classList.remove('hidden');
+
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, function (error) {
+                console.log('FAILED...', error);
+                alert('Submission failed. Please try again or contact us directly.');
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            });
     });
 }
 
