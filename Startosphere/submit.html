@@ -22,7 +22,7 @@
     <script type="text/javascript">
         (function () {
             // https://dashboard.emailjs.com/admin/account
-            emailjs.init(9lNuvNIsjReyeXFQQ);
+            emailjs.init('9lNuvNIsjReyeXFQQ');
         })();
     </script>
 
@@ -105,6 +105,15 @@
                             </div>
 
                             <div>
+                                <label for="logo" class="block text-sm font-semibold text-navy-900 mb-2">
+                                    Company Logo
+                                </label>
+                                <input type="file" id="logo" name="logo" accept="image/*"
+                                    class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:border-blue-500 transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                                <p class="text-gray-500 text-sm mt-2">Recommended size: Square (1:1), max 500KB</p>
+                            </div>
+
+                            <div>
                                 <label for="category" class="block text-sm font-semibold text-navy-900 mb-2">
                                     Service Category <span class="text-pink-600">*</span>
                                 </label>
@@ -112,13 +121,12 @@
                                     class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:border-blue-500 transition-colors">
                                     <option value="">Select a category</option>
                                     <option value="accounting">Accounting</option>
-                                    <option value="ancillary">Ancillary</option>
                                     <option value="fundraising">Fundraising</option>
                                     <option value="hr">HR & Hiring</option>
                                     <option value="it">IT Services</option>
                                     <option value="legal">Legal</option>
                                     <option value="marketing">Marketing</option>
-                                    <option value="estate">Real Estate</option>
+                                    <option value="estate_ancillary">Real Estate & Ancillary</option>
                                 </select>
                             </div>
 

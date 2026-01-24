@@ -88,13 +88,12 @@
                             class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:border-blue-500 transition-colors">
                             <option value="all">All Categories</option>
                             <option value="accounting">Accounting</option>
-                            <option value="ancillary">Ancillary</option>
                             <option value="fundraising">Fundraising</option>
                             <option value="hr">HR & Hiring</option>
                             <option value="it">IT Services</option>
                             <option value="legal">Legal</option>
                             <option value="marketing">Marketing</option>
-                            <option value="estate">Real Estate</option>
+                            <option value="estate_ancillary">Real Estate & Ancillary</option>
                         </select>
                     </div>
 
@@ -126,215 +125,6 @@
         <div class="max-w-7xl mx-auto">
             <div id="providers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                <!-- Provider Card 1 -->
-                <div class="provider-card glass-card p-6 rounded-2xl hover:transform hover:scale-105 transition-all cursor-pointer"
-                    data-category="accounting" onclick="window.location.href='profile.html?id=1'">
-                    <div class="flex items-start justify-between mb-4">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold">
-                            FC
-                        </div>
-                        <span
-                            class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-semibold">Accounting</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-navy-900 mb-2">FinanceCore Solutions</h3>
-                    <p class="text-gray-600 mb-4">Expert accounting and bookkeeping for early-stage startups. CFO
-                        advisory services available.</p>
-                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        San Francisco, CA
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-1">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <span class="text-navy-900 font-semibold">4.9</span>
-                            <span class="text-gray-500">(24 reviews)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Provider Card 2 -->
-                <div class="provider-card glass-card p-6 rounded-2xl hover:transform hover:scale-105 transition-all cursor-pointer"
-                    data-category="legal" onclick="window.location.href='profile.html?id=2'">
-                    <div class="flex items-start justify-between mb-4">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold">
-                            SL
-                        </div>
-                        <span
-                            class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold">Legal</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-navy-900 mb-2">Startup Legal Partners</h3>
-                    <p class="text-gray-600 mb-4">Incorporation, contracts, and IP protection for tech startups.
-                        Fixed-fee packages available.</p>
-                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        New York, NY
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-1">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <span class="text-navy-900 font-semibold">5.0</span>
-                            <span class="text-gray-500">(18 reviews)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Provider Card 3 -->
-                <div class="provider-card glass-card p-6 rounded-2xl hover:transform hover:scale-105 transition-all cursor-pointer"
-                    data-category="it" onclick="window.location.href='profile.html?id=3'">
-                    <div class="flex items-start justify-between mb-4">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-purple-400 to-violet-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold">
-                            CT
-                        </div>
-                        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold">IT
-                            Services</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-navy-900 mb-2">CloudTech Infrastructure</h3>
-                    <p class="text-gray-600 mb-4">Cloud setup, DevOps, and infrastructure management. AWS and Azure
-                        certified experts.</p>
-                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        Austin, TX
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-1">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <span class="text-navy-900 font-semibold">4.8</span>
-                            <span class="text-gray-500">(31 reviews)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Provider Card 4 -->
-                <div class="provider-card glass-card p-6 rounded-2xl hover:transform hover:scale-105 transition-all cursor-pointer"
-                    data-category="marketing" onclick="window.location.href='profile.html?id=4'">
-                    <div class="flex items-start justify-between mb-4">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-pink-400 to-rose-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold">
-                            GM
-                        </div>
-                        <span
-                            class="px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full text-sm font-semibold">Marketing</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-navy-900 mb-2">GrowthMakers Agency</h3>
-                    <p class="text-gray-600 mb-4">Performance marketing and growth hacking for SaaS startups.
-                        Data-driven strategies.</p>
-                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        Los Angeles, CA
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-1">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <span class="text-navy-900 font-semibold">4.9</span>
-                            <span class="text-gray-500">(27 reviews)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Provider Card 5 -->
-                <div class="provider-card glass-card p-6 rounded-2xl hover:transform hover:scale-105 transition-all cursor-pointer"
-                    data-category="accounting" onclick="window.location.href='profile.html?id=5'">
-                    <div class="flex items-start justify-between mb-4">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold">
-                            NB
-                        </div>
-                        <span
-                            class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-semibold">Accounting</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-navy-900 mb-2">NumbersCraft Accounting</h3>
-                    <p class="text-gray-600 mb-4">Tax planning and financial modeling for tech companies.
-                        Startup-friendly pricing.</p>
-                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        Seattle, WA
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-1">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <span class="text-navy-900 font-semibold">4.7</span>
-                            <span class="text-gray-500">(15 reviews)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Provider Card 6 -->
-                <div class="provider-card glass-card p-6 rounded-2xl hover:transform hover:scale-105 transition-all cursor-pointer"
-                    data-category="it" onclick="window.location.href='profile.html?id=6'">
-                    <div class="flex items-start justify-between mb-4">
-                        <div
-                            class="w-16 h-16 bg-gradient-to-br from-purple-400 to-violet-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold">
-                            DS
-                        </div>
-                        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-semibold">IT
-                            Services</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-navy-900 mb-2">DevSecure Solutions</h3>
-                    <p class="text-gray-600 mb-4">Cybersecurity and compliance for startups. SOC 2, GDPR, and HIPAA
-                        expertise.</p>
-                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        Boston, MA
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-1">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <span class="text-navy-900 font-semibold">5.0</span>
-                            <span class="text-gray-500">(22 reviews)</span>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </div>
@@ -361,6 +151,7 @@
     </footer>
 
     <!-- JavaScript -->
+    <script src="providers.js"></script>
     <script src="script.js"></script>
 </body>
 

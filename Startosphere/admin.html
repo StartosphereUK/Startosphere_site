@@ -19,295 +19,427 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="font-poppins bg-gradient-to-br from-slate-50 via-gray-100 to-slate-100 min-h-screen">
+<body class="font-poppins bg-slate-50 min-h-screen flex flex-col">
 
-    <!-- SECURITY WARNING BANNER -->
-    <div class="bg-red-600 text-white text-center py-3 px-4 font-bold shadow-lg z-50 relative">
-        ⚠️ OFF-LINE TOOL ONLY: DO NOT UPLOAD THIS FILE TO YOUR WEBSITE ⚠️
-        <p class="text-xs font-normal mt-1 opacity-90">Keep this file in your local folder. It is designed to work
-            without internet.</p>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="fixed w-full top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20 md:h-24">
-                <div class="flex items-center">
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-gray-200 z-40">
+        <div class="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-4">
                     <a href="index.html" class="flex items-center gap-2">
-                        <img src="logo.png" alt="Startosphere Logo" class="h-48 md:h-60">
+                        <img src="logo.png" alt="Logo" class="h-10">
                     </a>
-                    <span
-                        class="ml-4 px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs font-bold uppercase tracking-wider">Local
-                        Admin</span>
+                    <div class="h-6 w-px bg-gray-300"></div>
+                    <span class="text-navy-900 font-bold text-lg">Admin Dashboard</span>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">Home</a>
-                    <a href="browse.html" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">Browse
-                        Providers</a>
+                <div class="flex items-center gap-4">
+                    <button onclick="triggerBulkImport()" class="text-gray-600 hover:text-blue-600 text-sm font-medium">
+                        Bulk Import
+                    </button>
+                    <button id="save-btn" onclick="saveDatabase()"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        Download Database
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Header -->
-    <section class="pt-32 pb-12 px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-bold text-navy-900 mb-6">
-                Add New Service Provider
-            </h1>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Paste the "Data Block" from your email notification to auto-fill.
-            </p>
-        </div>
-    </section>
+    <!-- Main Workspace -->
+    <div class="flex-1 flex overflow-hidden">
 
-    <!-- Paste Import Section -->
-    <section class="px-4 mb-8">
-        <div class="max-w-3xl mx-auto">
-            <div class="glass-card p-6 rounded-2xl bg-slate-50 border border-slate-200">
-                <h3 class="text-lg font-bold text-navy-900 mb-3">👇 Paste Email Data Block Here</h3>
-                <div class="flex gap-4">
-                    <input type="text" id="import-data"
-                        class="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-2 text-sm font-mono text-gray-600 focus:outline-none focus:border-blue-500"
-                        placeholder='{"company-name": "...", "category": "..."}'>
-                    <button type="button" id="import-btn"
-                        class="px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                        Auto-Fill
-                    </button>
-                </div>
+        <!-- Sidebar: List -->
+        <aside class="w-80 bg-white border-r border-gray-200 flex flex-col">
+            <div class="p-4 border-b border-gray-200">
+                <button onclick="createNew()"
+                    class="w-full bg-navy-900 text-white py-2 rounded-lg font-medium hover:bg-blue-900 transition-colors mb-4">
+                    + Add New Provider
+                </button>
+                <input type="text" id="admin-search" placeholder="Search providers..."
+                    class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
             </div>
-        </div>
-    </section>
+            <div id="provider-list" class="flex-1 overflow-y-auto p-2 space-y-1">
+                <!-- Items injected here -->
+            </div>
+            <div class="p-3 bg-gray-50 border-t border-gray-200 text-xs text-center text-gray-500">
+                <span id="count-display">0</span> providers loaded
+            </div>
+        </aside>
 
-    <!-- Form Section -->
-    <section class="pb-20 px-4">
-        <div class="max-w-3xl mx-auto">
-            <div class="glass-card p-8 md:p-12 rounded-3xl">
-                <form id="admin-provider-form" class="space-y-8">
+        <!-- Main Editor -->
+        <main class="flex-1 overflow-y-auto bg-gray-50 p-8">
+            <div class="max-w-4xl mx-auto">
+                <div id="editor-container" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 hidden">
+                    <div class="flex justify-between items-start mb-6">
+                        <h2 class="text-2xl font-bold text-navy-900">Edit Provider</h2>
+                        <button onclick="deleteCurrent()"
+                            class="text-red-500 hover:text-red-700 text-sm font-medium px-3 py-1 bg-red-50 rounded-lg hover:bg-red-100 transition-colors">
+                            Delete Provider
+                        </button>
+                    </div>
 
-                    <!-- Company Information -->
-                    <div>
-                        <h2 class="text-2xl font-bold text-navy-900 mb-6">Provider Details</h2>
-                        <div class="space-y-6">
+                    <form id="editor-form" class="space-y-6">
+                        <input type="hidden" name="id">
 
+                        <!-- Top Row -->
+                        <div class="grid grid-cols-2 gap-6">
                             <div>
-                                <label class="block text-sm font-semibold text-navy-900 mb-2">Company Name</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Company Name</label>
                                 <input type="text" name="company-name" required
-                                    class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:border-blue-500 transition-colors">
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
                             </div>
-
                             <div>
-                                <label class="block text-sm font-semibold text-navy-900 mb-2">Category</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Category</label>
                                 <select name="category" required
-                                    class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:border-blue-500 transition-colors">
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
                                     <option value="accounting">Accounting</option>
-                                    <option value="ancillary">Ancillary</option>
                                     <option value="fundraising">Fundraising</option>
                                     <option value="hr">HR & Hiring</option>
                                     <option value="it">IT Services</option>
                                     <option value="legal">Legal</option>
                                     <option value="marketing">Marketing</option>
-                                    <option value="estate">Real Estate</option>
+                                    <option value="estate_ancillary">Real Estate & Ancillary</option>
                                 </select>
                             </div>
+                        </div>
 
-                            <div>
-                                <label class="block text-sm font-semibold text-navy-900 mb-2">Description
-                                    (Short)</label>
-                                <textarea name="description" required rows="2"
-                                    class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:border-blue-500 transition-colors"></textarea>
-                            </div>
+                        <!-- Description -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Description</label>
+                            <textarea name="description" rows="3" required
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-sm font-semibold text-navy-900 mb-2">Location</label>
-                                    <input type="text" name="location" required
-                                        class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:border-blue-500 transition-colors">
+                        <!-- Logo Upload -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Company Logo</label>
+                            <div class="space-y-2">
+                                <input type="file" id="logo-upload" accept="image/*"
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                                <input type="hidden" name="logo">
+                                <div id="logo-preview" class="hidden mt-2">
+                                    <img id="logo-preview-img"
+                                        class="w-24 h-24 object-cover rounded-lg border-2 border-gray-300">
+                                    <button type="button" onclick="removeLogo()"
+                                        class="text-xs text-red-600 hover:text-red-800 mt-1">Remove Logo</button>
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-semibold text-navy-900 mb-2">Rating (0-5)</label>
-                                    <input type="number" name="rating" value="5.0" step="0.1" max="5.0"
-                                        class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:border-blue-500 transition-colors">
-                                </div>
+                                <p class="text-xs text-gray-500">Square image recommended, max 500KB</p>
                             </div>
+                        </div>
 
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-6">
                             <div>
-                                <label class="block text-sm font-semibold text-navy-900 mb-2">Review Count</label>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Location</label>
+                                <input type="text" name="location" required
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Rating</label>
+                                <input type="number" name="rating" step="0.1" max="5.0" value="5.0"
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Reviews</label>
                                 <input type="number" name="reviews" value="0"
-                                    class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:border-blue-500 transition-colors">
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
                             </div>
-
                         </div>
-                    </div>
 
-                    <!-- File Upload for Validation -->
-                    <div class="border-t border-gray-200 pt-8">
-                        <h2 class="text-2xl font-bold text-navy-900 mb-6">Update Website</h2>
-                        <div class="space-y-4">
-                            <label class="block text-sm font-semibold text-navy-900 mb-2">
-                                Select current 'browse.html' file
-                                <span class="text-gray-500 font-normal ml-2">(Required to append validation)</span>
-                            </label>
-                            <input type="file" id="browse-file-input" accept=".html" required
-                                class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:border-blue-500 transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                        <!-- Contact -->
+                        <div class="bg-gray-50 p-4 rounded-lg space-y-4">
+                            <h3 class="font-semibold text-gray-900 border-b border-gray-200 pb-2">Contact Info</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs uppercase text-gray-500 font-bold mb-1">Email</label>
+                                    <input type="email" name="email"
+                                        class="w-full border border-gray-300 rounded px-2 py-1">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase text-gray-500 font-bold mb-1">Phone</label>
+                                    <input type="text" name="phone"
+                                        class="w-full border border-gray-300 rounded px-2 py-1">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase text-gray-500 font-bold mb-1">Website</label>
+                                    <input type="text" name="website"
+                                        class="w-full border border-gray-300 rounded px-2 py-1">
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-xs uppercase text-gray-500 font-bold mb-1">Specialties</label>
+                                    <input type="text" name="specialties" placeholder="Comma separated"
+                                        class="w-full border border-gray-300 rounded px-2 py-1">
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Action Buttons -->
-                    <div class="pt-4 flex flex-col gap-4">
-                        <button type="submit"
-                            class="w-full px-8 py-4 bg-navy-900 text-white rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-navy-900/30 transition-all transform hover:scale-105">
-                            Generate & Download New File
-                        </button>
-                    </div>
+                        <div>
+                            <button type="submit"
+                                class="w-full bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700 transition-colors shadow-lg">
+                                Save Entry
+                            </button>
+                        </div>
+                    </form>
+                </div>
 
-                </form>
-
-                <!-- Output Section -->
-                <div id="result-section" class="hidden mt-12 pt-12 border-t border-gray-200">
-                    <h2 class="text-2xl font-bold text-navy-900 mb-6">Success!</h2>
-                    <div class="bg-green-50 p-6 rounded-xl border border-green-200 mb-6">
-                        <p class="text-green-800 font-semibold mb-2">
-                            New 'browse.html' generated successfully.
-                        </p>
-                        <p class="text-green-700 text-sm">
-                            1. Download the file below.<br>
-                            2. Replace your existing 'browse.html' in the folder.<br>
-                            3. Refresh the page to see the changes.
-                        </p>
-                    </div>
-                    <button id="download-btn"
-                        class="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-blue-500/30">
-                        Download Updated browse.html
-                    </button>
-
-                    <div class="mt-8">
-                        <h3 class="text-lg font-bold text-navy-900 mb-2">Generated Card HTML (Preview)</h3>
-                        <textarea id="preview-code" readonly
-                            class="w-full h-48 bg-gray-50 border border-gray-300 rounded-lg p-4 font-mono text-sm text-gray-600 focus:outline-none"></textarea>
-                    </div>
+                <!-- Empty State -->
+                <div id="empty-state"
+                    class="flex flex-col items-center justify-center h-full text-center py-20 text-gray-400">
+                    <svg class="w-16 h-16 mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                        </path>
+                    </svg>
+                    <p class="text-lg">Select a provider to edit or add a new one.</p>
                 </div>
             </div>
+        </main>
+    </div>
+
+    <!-- Bulk Import Modal -->
+    <div id="bulk-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl p-6">
+            <h3 class="text-xl font-bold mb-4">Bulk Import (JSON)</h3>
+            <p class="text-sm text-gray-500 mb-2">Paste a JSON array of provider objects. This will ADD to the existing
+                list.</p>
+            <textarea id="bulk-input" rows="8"
+                class="w-full border border-gray-300 rounded-lg p-3 font-mono text-xs mb-4"
+                placeholder='[{"company-name": "Example", ...}]'></textarea>
+            <div class="flex justify-end gap-3">
+                <button onclick="document.getElementById('bulk-modal').classList.add('hidden')"
+                    class="px-4 py-2 text-gray-600 font-medium">Cancel</button>
+                <button onclick="processBulkImport()"
+                    class="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium">Import Data</button>
+            </div>
         </div>
-    </section>
+    </div>
 
+    <!-- Core Logic -->
+    <script src="providers.js"></script>
     <script>
-        document.getElementById('import-btn').addEventListener('click', function () {
-            try {
-                const jsonStr = document.getElementById('import-data').value;
-                const data = JSON.parse(jsonStr);
+        let db = [];
+        let currentId = null;
 
-                // Map inputs
-                const form = document.getElementById('admin-provider-form');
-                if (data['company-name']) form.elements['company-name'].value = data['company-name'];
-                if (data['category']) form.elements['category'].value = data['category'];
-                if (data['description']) form.elements['description'].value = data['description'];
-                if (data['location']) form.elements['location'].value = data['location'];
-
-                alert('Data Imported Successfully!');
-            } catch (e) {
-                alert('Invalid Data Block. Please copy the EXACT text from the email starting with { and ending with }');
-                console.error(e);
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof providersData !== 'undefined') {
+                db = providersData;
+                renderSidebar();
+            } else {
+                console.log('No providers.js found or empty.');
+                db = [];
+                renderSidebar();
             }
         });
 
-        document.getElementById('admin-provider-form').addEventListener('submit', async function (e) {
-            e.preventDefault();
+        // ... (rest of code) ...
 
-            const fileInput = document.getElementById('browse-file-input');
-            if (fileInput.files.length === 0) {
-                alert("Please select the 'browse.html' file first.");
+        // Final Save/Download
+        function saveDatabase() {
+            const jsonStr = JSON.stringify(db, null, 2);
+            const jsContent = `const providersData = ${jsonStr};`;
+            const blob = new Blob([jsContent], { type: 'application/javascript' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'providers.js';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            alert('File downloaded! Please replace "providers.js" in your folder to apply changes live.');
+        }
+
+        // Rendering
+        function renderSidebar() {
+            const list = document.getElementById('provider-list');
+            const term = document.getElementById('admin-search').value.toLowerCase();
+            const count = document.getElementById('count-display');
+
+            list.innerHTML = '';
+            let visibleCount = 0;
+
+            db.forEach((item, index) => {
+                const name = item['company-name'] || 'Untitled';
+                if (name.toLowerCase().includes(term)) {
+                    visibleCount++;
+                    const btn = document.createElement('button');
+                    btn.className = `w-full text-left px-3 py-3 rounded-lg text-sm mb-1 hover:bg-gray-100 transition-colors ${currentId === item.id ? 'bg-blue-50 text-blue-700 font-semibold ring-1 ring-blue-200' : 'text-gray-700'}`;
+                    btn.innerHTML = `
+                        <div class="truncate">${name}</div>
+                        <div class="text-xs text-gray-400 truncate">${item.category}</div>
+                    `;
+                    btn.onclick = () => loadEditor(item.id);
+                    list.appendChild(btn);
+                }
+            });
+            count.textContent = visibleCount;
+        }
+
+        // Editor Logic
+        function loadEditor(id) {
+            currentId = id;
+            const item = db.find(x => x.id === id);
+            if (!item) return;
+
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('editor-container').classList.remove('hidden');
+
+            const form = document.getElementById('editor-form');
+            form.elements['id'].value = item.id;
+            form.elements['company-name'].value = item['company-name'] || '';
+            form.elements['category'].value = item['category'] || 'accounting';
+            form.elements['description'].value = item['description'] || '';
+            form.elements['location'].value = item['location'] || '';
+            form.elements['rating'].value = item['rating'] || 5.0;
+            form.elements['reviews'].value = item['reviews'] || 0;
+            form.elements['email'].value = item['email'] || '';
+            form.elements['phone'].value = item['phone'] || '';
+            form.elements['website'].value = item['website'] || '';
+            form.elements['specialties'].value = item['specialties'] || '';
+            form.elements['logo'].value = item['logo'] || '';
+
+            // Handle logo preview
+            const logoPreview = document.getElementById('logo-preview');
+            const logoPreviewImg = document.getElementById('logo-preview-img');
+            if (item['logo']) {
+                logoPreviewImg.src = item['logo'];
+                logoPreview.classList.remove('hidden');
+            } else {
+                logoPreview.classList.add('hidden');
+            }
+
+            renderSidebar(); // Update active state
+        }
+
+        // Logo Upload Handler
+        document.getElementById('logo-upload').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            if (file.size > 500000) {
+                alert('File is too large. Please upload an image smaller than 500KB.');
+                e.target.value = '';
                 return;
             }
 
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
-
-            // 1. Generate Card HTML
-            const initials = data['company-name'].split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
-
-            // Color mapping based on category
-            const colorMap = {
-                'accounting': 'green',
-                'legal': 'blue',
-                'it': 'purple',
-                'marketing': 'pink',
-                'fundraising': 'yellow',
-                'hr': 'orange',
-                'ancillary': 'gray',
-                'estate': 'indigo'
-            };
-            const color = colorMap[data['category']] || 'blue';
-            // Proper label formatting
-            const categoryLabel = data['category'].charAt(0).toUpperCase() + data['category'].slice(1);
-
-            const cardHtml = `
-                <!-- Provider Card (Added via Admin) -->
-                <div class="provider-card glass-card p-6 rounded-2xl hover:transform hover:scale-105 transition-all cursor-pointer"
-                    data-category="${data['category']}" onclick="window.location.href='profile.html?id=new'">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="w-16 h-16 bg-gradient-to-br from-${color}-400 to-${color}-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold">
-                            ${initials}
-                        </div>
-                        <span class="px-3 py-1 bg-${color}-500/20 text-${color}-400 rounded-full text-sm font-semibold">${categoryLabel}</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-navy-900 mb-2">${data['company-name']}</h3>
-                    <p class="text-gray-600 mb-4">${data['description']}</p>
-                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
-                        </svg>
-                        ${data['location']}
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-1">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                            </svg>
-                            <span class="text-navy-900 font-semibold">${data['rating']}</span>
-                            <span class="text-gray-500">(${data['reviews']} reviews)</span>
-                        </div>
-                    </div>
-                </div>`;
-
-            // Display in Preview
-            document.getElementById('preview-code').value = cardHtml;
-
-            // 2. Read File and Inject
-            const file = fileInput.files[0];
             const reader = new FileReader();
-
-            reader.onload = function (e) {
-                let html = e.target.result;
-                const gridStartMarker = '<div id="providers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">';
-
-                if (html.includes(gridStartMarker)) {
-                    const insertPosition = html.indexOf(gridStartMarker) + gridStartMarker.length;
-                    const newHtml = html.slice(0, insertPosition) + '\n' + cardHtml + html.slice(insertPosition);
-
-                    // 3. Prepare Download
-                    const blob = new Blob([newHtml], { type: 'text/html' });
-                    const url = URL.createObjectURL(blob);
-
-                    const downloadBtn = document.getElementById('download-btn');
-                    downloadBtn.onclick = () => {
-                        const a = document.createElement('a');
-                        a.href = url;
-                        a.download = 'browse.html';
-                        document.body.appendChild(a);
-                        a.click();
-                        document.body.removeChild(a);
-                    };
-
-                    document.getElementById('result-section').classList.remove('hidden');
-                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-                } else {
-                    alert('Error: Could not find providers grid in the selected file. Make sure it is the correct browse.html.');
-                }
+            reader.onload = function (event) {
+                const base64 = event.target.result;
+                document.querySelector('input[name="logo"]').value = base64;
+                document.getElementById('logo-preview-img').src = base64;
+                document.getElementById('logo-preview').classList.remove('hidden');
             };
-
-            reader.readAsText(file);
+            reader.readAsDataURL(file);
         });
+
+        // Remove Logo Function
+        function removeLogo() {
+            document.querySelector('input[name="logo"]').value = '';
+            document.getElementById('logo-upload').value = '';
+            document.getElementById('logo-preview').classList.add('hidden');
+        }
+
+        function createNew() {
+            const newId = 'prov_' + Date.now();
+            const newItem = {
+                id: newId,
+                'company-name': 'New Provider',
+                category: 'accounting',
+                description: '',
+                location: '',
+                rating: 5.0,
+                reviews: 0
+            };
+            db.unshift(newItem); // Add to top
+            renderSidebar();
+            loadEditor(newId);
+            // Focus name field
+            document.querySelector('input[name="company-name"]').focus();
+        }
+
+        function deleteCurrent() {
+            if (!currentId) return;
+            if (!confirm('Are you sure you want to delete this provider? This cannot be undone.')) return;
+
+            db = db.filter(x => x.id !== currentId);
+            currentId = null;
+            document.getElementById('editor-container').classList.add('hidden');
+            document.getElementById('empty-state').classList.remove('hidden');
+            renderSidebar();
+        }
+
+        // Form Save
+        document.getElementById('editor-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const id = currentId;
+            const index = db.findIndex(x => x.id === id);
+
+            if (index === -1) return;
+
+            // Update DB Object
+            db[index]['company-name'] = form.elements['company-name'].value;
+            db[index]['category'] = form.elements['category'].value;
+            db[index]['description'] = form.elements['description'].value;
+            db[index]['location'] = form.elements['location'].value;
+            db[index]['rating'] = form.elements['rating'].value;
+            db[index]['reviews'] = form.elements['reviews'].value;
+            db[index]['email'] = form.elements['email'].value;
+            db[index]['phone'] = form.elements['phone'].value;
+            db[index]['website'] = form.elements['website'].value;
+            db[index]['specialties'] = form.elements['specialties'].value;
+            db[index]['logo'] = form.elements['logo'].value;
+
+            // Flash success
+            renderSidebar();
+            const btn = form.querySelector('button[type="submit"]');
+            const original = btn.textContent;
+            btn.textContent = 'Saved!';
+            btn.classList.add('bg-green-700');
+            setTimeout(() => {
+                btn.textContent = original;
+                btn.classList.remove('bg-green-700');
+            }, 1000);
+        });
+
+        // Search Listener
+        document.getElementById('admin-search').addEventListener('input', renderSidebar);
+
+        // Bulk Import
+        function triggerBulkImport() {
+            document.getElementById('bulk-modal').classList.remove('hidden');
+        }
+
+        function processBulkImport() {
+            try {
+                const raw = document.getElementById('bulk-input').value;
+                const data = JSON.parse(raw);
+                if (!Array.isArray(data)) throw new Error('Input must be a JSON array');
+
+                // Process each item to ensure it has an ID
+                const cleanData = data.map(item => ({
+                    ...item,
+                    id: item.id || 'imp_' + Math.random().toString(36).substr(2, 9)
+                }));
+
+                db = [...db, ...cleanData];
+                renderSidebar();
+                document.getElementById('bulk-modal').classList.add('hidden');
+                document.getElementById('bulk-input').value = '';
+                alert(`Successfully imported ${cleanData.length} providers.`);
+            } catch (e) {
+                alert('Invalid JSON: ' + e.message);
+            }
+        }
+
     </script>
 </body>
 
