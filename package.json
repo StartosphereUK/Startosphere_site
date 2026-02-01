@@ -1,0 +1,13 @@
+{
+    "name": "startosphere",
+    "version": "1.0.0",
+    "description": "Startosphere website with backend API",
+    "scripts": {
+        "start": "vercel dev",
+        "deploy": "vercel --prod"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {}
+}

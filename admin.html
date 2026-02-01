@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Startosphere</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="font-poppins bg-slate-50 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-gray-200 z-40">
+        <div class="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="logo.png" alt="Logo" class="h-10">
+                    </a>
+                    <div class="h-6 w-px bg-gray-300"></div>
+                    <span class="text-navy-900 font-bold text-lg">Admin Dashboard</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="triggerBulkImport()" class="text-gray-600 hover:text-blue-600 text-sm font-medium">
+                        Bulk Import
+                    </button>
+                    <button id="save-btn" onclick="saveDatabase()"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        Download Database
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Workspace -->
+    <div class="flex-1 flex overflow-hidden">
+
+        <!-- Sidebar: List -->
+        <aside class="w-80 bg-white border-r border-gray-200 flex flex-col">
+            <div class="p-4 border-b border-gray-200">
+                <button onclick="createNew()"
+                    class="w-full bg-navy-900 text-white py-2 rounded-lg font-medium hover:bg-blue-900 transition-colors mb-4">
+                    + Add New Provider
+                </button>
+                <input type="text" id="admin-search" placeholder="Search providers..."
+                    class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+            </div>
+            <div id="provider-list" class="flex-1 overflow-y-auto p-2 space-y-1">
+                <!-- Items injected here -->
+            </div>
+            <div class="p-3 bg-gray-50 border-t border-gray-200 text-xs text-center text-gray-500">
+                <span id="count-display">0</span> providers loaded
+            </div>
+        </aside>
+
+        <!-- Main Editor -->
+        <main class="flex-1 overflow-y-auto bg-gray-50 p-8">
+            <div class="max-w-4xl mx-auto">
+                <div id="editor-container" class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 hidden">
+                    <div class="flex justify-between items-start mb-6">
+                        <h2 class="text-2xl font-bold text-navy-900">Edit Provider</h2>
+                        <button onclick="deleteCurrent()"
+                            class="text-red-500 hover:text-red-700 text-sm font-medium px-3 py-1 bg-red-50 rounded-lg hover:bg-red-100 transition-colors">
+                            Delete Provider
+                        </button>
+                    </div>
+
+                    <form id="editor-form" class="space-y-6">
+                        <input type="hidden" name="id">
+
+                        <!-- Top Row -->
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Company Name</label>
+                                <input type="text" name="company-name" required
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Category</label>
+                                <select name="category" required
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
+                                    <option value="accounting">Accounting</option>
+                                    <option value="fundraising">Fundraising</option>
+                                    <option value="hr">HR & Hiring</option>
+                                    <option value="it">IT Services</option>
+                                    <option value="legal">Legal</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="estate_ancillary">Real Estate & Ancillary</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Description</label>
+                            <textarea name="description" rows="3" required
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+
+                        <!-- Logo Upload -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Company Logo</label>
+                            <div class="space-y-2">
+                                <input type="file" id="logo-upload" accept="image/*"
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                                <input type="hidden" name="logo">
+                                <div id="logo-preview" class="hidden mt-2">
+                                    <img id="logo-preview-img"
+                                        class="w-24 h-24 object-cover rounded-lg border-2 border-gray-300">
+                                    <button type="button" onclick="removeLogo()"
+                                        class="text-xs text-red-600 hover:text-red-800 mt-1">Remove Logo</button>
+                                </div>
+                                <p class="text-xs text-gray-500">Square image recommended, max 500KB</p>
+                            </div>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="grid grid-cols-3 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Location</label>
+                                <input type="text" name="location" required
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Rating</label>
+                                <input type="number" name="rating" step="0.1" max="5.0" value="5.0"
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-1">Reviews</label>
+                                <input type="number" name="reviews" value="0"
+                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+
+                        <!-- Contact -->
+                        <div class="bg-gray-50 p-4 rounded-lg space-y-4">
+                            <h3 class="font-semibold text-gray-900 border-b border-gray-200 pb-2">Contact Info</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs uppercase text-gray-500 font-bold mb-1">Email</label>
+                                    <input type="email" name="email"
+                                        class="w-full border border-gray-300 rounded px-2 py-1">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase text-gray-500 font-bold mb-1">Phone</label>
+                                    <input type="text" name="phone"
+                                        class="w-full border border-gray-300 rounded px-2 py-1">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase text-gray-500 font-bold mb-1">Website</label>
+                                    <input type="text" name="website"
+                                        class="w-full border border-gray-300 rounded px-2 py-1">
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-xs uppercase text-gray-500 font-bold mb-1">Specialties</label>
+                                    <input type="text" name="specialties" placeholder="Comma separated"
+                                        class="w-full border border-gray-300 rounded px-2 py-1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit"
+                                class="w-full bg-green-600 text-white py-3 rounded-lg font-bold hover:bg-green-700 transition-colors shadow-lg">
+                                Save Entry
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state"
+                    class="flex flex-col items-center justify-center h-full text-center py-20 text-gray-400">
+                    <svg class="w-16 h-16 mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                        </path>
+                    </svg>
+                    <p class="text-lg">Select a provider to edit or add a new one.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bulk Import Modal -->
+    <div id="bulk-modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl p-6">
+            <h3 class="text-xl font-bold mb-4">Bulk Import (JSON)</h3>
+            <p class="text-sm text-gray-500 mb-2">Paste a JSON array of provider objects. This will ADD to the existing
+                list.</p>
+            <textarea id="bulk-input" rows="8"
+                class="w-full border border-gray-300 rounded-lg p-3 font-mono text-xs mb-4"
+                placeholder='[{"company-name": "Example", ...}]'></textarea>
+            <div class="flex justify-end gap-3">
+                <button onclick="document.getElementById('bulk-modal').classList.add('hidden')"
+                    class="px-4 py-2 text-gray-600 font-medium">Cancel</button>
+                <button onclick="processBulkImport()"
+                    class="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium">Import Data</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Logic -->
+    <script src="providers.js"></script>
+    <script>
+        let db = [];
+        let currentId = null;
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof providersData !== 'undefined') {
+                db = providersData;
+                renderSidebar();
+            } else {
+                console.log('No providers.js found or empty.');
+                db = [];
+                renderSidebar();
+            }
+        });
+
+        // ... (rest of code) ...
+
+        // Final Save/Download
+        function saveDatabase() {
+            const jsonStr = JSON.stringify(db, null, 2);
+            const jsContent = `const providersData = ${jsonStr};`;
+            const blob = new Blob([jsContent], { type: 'application/javascript' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'providers.js';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            alert('File downloaded! Please replace "providers.js" in your folder to apply changes live.');
+        }
+
+        // Rendering
+        function renderSidebar() {
+            const list = document.getElementById('provider-list');
+            const term = document.getElementById('admin-search').value.toLowerCase();
+            const count = document.getElementById('count-display');
+
+            list.innerHTML = '';
+            let visibleCount = 0;
+
+            db.forEach((item, index) => {
+                const name = item['company-name'] || 'Untitled';
+                if (name.toLowerCase().includes(term)) {
+                    visibleCount++;
+                    const btn = document.createElement('button');
+                    btn.className = `w-full text-left px-3 py-3 rounded-lg text-sm mb-1 hover:bg-gray-100 transition-colors ${currentId === item.id ? 'bg-blue-50 text-blue-700 font-semibold ring-1 ring-blue-200' : 'text-gray-700'}`;
+                    btn.innerHTML = `
+                        <div class="truncate">${name}</div>
+                        <div class="text-xs text-gray-400 truncate">${item.category}</div>
+                    `;
+                    btn.onclick = () => loadEditor(item.id);
+                    list.appendChild(btn);
+                }
+            });
+            count.textContent = visibleCount;
+        }
+
+        // Editor Logic
+        function loadEditor(id) {
+            currentId = id;
+            const item = db.find(x => x.id === id);
+            if (!item) return;
+
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('editor-container').classList.remove('hidden');
+
+            const form = document.getElementById('editor-form');
+            form.elements['id'].value = item.id;
+            form.elements['company-name'].value = item['company-name'] || '';
+            form.elements['category'].value = item['category'] || 'accounting';
+            form.elements['description'].value = item['description'] || '';
+            form.elements['location'].value = item['location'] || '';
+            form.elements['rating'].value = item['rating'] || 5.0;
+            form.elements['reviews'].value = item['reviews'] || 0;
+            form.elements['email'].value = item['email'] || '';
+            form.elements['phone'].value = item['phone'] || '';
+            form.elements['website'].value = item['website'] || '';
+            form.elements['specialties'].value = item['specialties'] || '';
+            form.elements['logo'].value = item['logo'] || '';
+
+            // Handle logo preview
+            const logoPreview = document.getElementById('logo-preview');
+            const logoPreviewImg = document.getElementById('logo-preview-img');
+            if (item['logo']) {
+                logoPreviewImg.src = item['logo'];
+                logoPreview.classList.remove('hidden');
+            } else {
+                logoPreview.classList.add('hidden');
+            }
+
+            renderSidebar(); // Update active state
+        }
+
+        // Logo Upload Handler
+        document.getElementById('logo-upload').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            if (file.size > 500000) {
+                alert('File is too large. Please upload an image smaller than 500KB.');
+                e.target.value = '';
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const base64 = event.target.result;
+                document.querySelector('input[name="logo"]').value = base64;
+                document.getElementById('logo-preview-img').src = base64;
+                document.getElementById('logo-preview').classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Remove Logo Function
+        function removeLogo() {
+            document.querySelector('input[name="logo"]').value = '';
+            document.getElementById('logo-upload').value = '';
+            document.getElementById('logo-preview').classList.add('hidden');
+        }
+
+        function createNew() {
+            const newId = 'prov_' + Date.now();
+            const newItem = {
+                id: newId,
+                'company-name': 'New Provider',
+                category: 'accounting',
+                description: '',
+                location: '',
+                rating: 5.0,
+                reviews: 0
+            };
+            db.unshift(newItem); // Add to top
+            renderSidebar();
+            loadEditor(newId);
+            // Focus name field
+            document.querySelector('input[name="company-name"]').focus();
+        }
+
+        function deleteCurrent() {
+            if (!currentId) return;
+            if (!confirm('Are you sure you want to delete this provider? This cannot be undone.')) return;
+
+            db = db.filter(x => x.id !== currentId);
+            currentId = null;
+            document.getElementById('editor-container').classList.add('hidden');
+            document.getElementById('empty-state').classList.remove('hidden');
+            renderSidebar();
+        }
+
+        // Form Save
+        document.getElementById('editor-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const id = currentId;
+            const index = db.findIndex(x => x.id === id);
+
+            if (index === -1) return;
+
+            // Update DB Object
+            db[index]['company-name'] = form.elements['company-name'].value;
+            db[index]['category'] = form.elements['category'].value;
+            db[index]['description'] = form.elements['description'].value;
+            db[index]['location'] = form.elements['location'].value;
+            db[index]['rating'] = form.elements['rating'].value;
+            db[index]['reviews'] = form.elements['reviews'].value;
+            db[index]['email'] = form.elements['email'].value;
+            db[index]['phone'] = form.elements['phone'].value;
+            db[index]['website'] = form.elements['website'].value;
+            db[index]['specialties'] = form.elements['specialties'].value;
+            db[index]['logo'] = form.elements['logo'].value;
+
+            // Flash success
+            renderSidebar();
+            const btn = form.querySelector('button[type="submit"]');
+            const original = btn.textContent;
+            btn.textContent = 'Saved!';
+            btn.classList.add('bg-green-700');
+            setTimeout(() => {
+                btn.textContent = original;
+                btn.classList.remove('bg-green-700');
+            }, 1000);
+        });
+
+        // Search Listener
+        document.getElementById('admin-search').addEventListener('input', renderSidebar);
+
+        // Bulk Import
+        function triggerBulkImport() {
+            document.getElementById('bulk-modal').classList.remove('hidden');
+        }
+
+        function processBulkImport() {
+            try {
+                const raw = document.getElementById('bulk-input').value;
+                const data = JSON.parse(raw);
+                if (!Array.isArray(data)) throw new Error('Input must be a JSON array');
+
+                // Process each item to ensure it has an ID
+                const cleanData = data.map(item => ({
+                    ...item,
+                    id: item.id || 'imp_' + Math.random().toString(36).substr(2, 9)
+                }));
+
+                db = [...db, ...cleanData];
+                renderSidebar();
+                document.getElementById('bulk-modal').classList.add('hidden');
+                document.getElementById('bulk-input').value = '';
+                alert(`Successfully imported ${cleanData.length} providers.`);
+            } catch (e) {
+                alert('Invalid JSON: ' + e.message);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
