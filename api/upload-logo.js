@@ -49,7 +49,9 @@ export default async function handler(req, res) {
                 url: data.secure_url
             });
         } else {
-            throw new Error('Upload failed');
+            // Log the full error from Cloudinary for debugging
+            console.error('Cloudinary Refusal:', data);
+            throw new Error(data.error?.message || 'Unknown Cloudinary error');
         }
 
     } catch (error) {
