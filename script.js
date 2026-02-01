@@ -187,7 +187,7 @@ if (document.getElementById('submit-form')) {
                 const reader = new FileReader();
                 reader.onload = async (e) => {
                     try {
-                        const apiUrl = '/api/upload-logo';
+                        const apiUrl = 'https://startosphere-site.vercel.app/api/upload-logo';
 
                         const response = await fetch(apiUrl, {
                             method: 'POST',
@@ -254,8 +254,8 @@ if (document.getElementById('submit-form')) {
 
         // Handle file upload
         if (file) {
-            if (file.size > 4500000) {
-                alert('File is too large. Please upload a logo smaller than 4.5MB.');
+            if (file.size > 3000000) {
+                alert('File is too large. Please upload a logo smaller than 3MB.');
                 submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
                 return;
