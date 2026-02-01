@@ -254,8 +254,8 @@ if (document.getElementById('submit-form')) {
 
         // Handle file upload
         if (file) {
-            if (file.size > 5000000) {
-                alert('File is too large. Please upload a logo smaller than 5MB.');
+            if (file.size > 4500000) {
+                alert('File is too large. Please upload a logo smaller than 4.5MB.');
                 submitBtn.innerText = originalBtnText;
                 submitBtn.disabled = false;
                 return;

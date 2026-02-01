@@ -23,6 +23,16 @@ export default async function handler(req, res) {
             return res.status(400).json({ error: 'No image provided' });
         }
 
+        if (!process.env.CLOUDINARY_CLOUD_NAME) {
+            console.error('Missing CLOUDINARY_CLOUD_NAME');
+            return res.status(500).json({ error: 'Server Config Error: Missing Cloud Name' });
+        }
+
+        if (!process.env.CLOUDINARY_UPLOAD_PRESET) {
+            console.error('Missing CLOUDINARY_UPLOAD_PRESET');
+            return res.status(500).json({ error: 'Server Config Error: Missing Upload Preset' });
+        }
+
         // Use image data URI directly (Cloudinary supports this)
 
         // Upload to Cloudinary (free tier: 25GB storage, 25GB bandwidth/month)
