@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startosphere - Connect with Startup Service Providers</title>
+    <meta name="description"
+        content="Connect startup founders with trusted service providers including accountants, lawyers, IT specialists, and marketing experts.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="font-poppins bg-gradient-to-br from-slate-50 via-gray-100 to-slate-100 min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 md:h-24">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="logo.png" alt="Startosphere Logo" class="h-48 md:h-60">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html"
+                        class="nav-link text-navy-900 font-semibold hover:text-blue-600 transition-colors">Home</a>
+                    <a href="browse.html" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">Browse
+                        Providers</a>
+                    <a href="submit.html" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">Submit
+                        Service</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-navy-900 hover:text-blue-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-b border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html"
+                    class="block px-3 py-2 text-navy-900 font-semibold hover:bg-blue-50 rounded-md">Home</a>
+                <a href="browse.html" class="block px-3 py-2 text-gray-600 hover:bg-blue-50 rounded-md">Browse
+                    Providers</a>
+                <a href="submit.html" class="block px-3 py-2 text-gray-600 hover:bg-blue-50 rounded-md">Submit
+                    Service</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-bold text-navy-900 mb-6 animate-fade-in">
+                Find the Perfect
+                <span class="text-blue-600">
+                    Service Provider
+                </span>
+                <br>for Your Startup
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
+                Connect with trusted accountants, lawyers, IT specialists, and marketing experts who understand the
+                startup ecosystem.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="browse.html"
+                    class="btn-primary px-8 py-4 bg-navy-900 text-white rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-navy-900/30 transition-all transform hover:scale-105">
+                    Browse Providers
+                </a>
+                <a href="submit.html"
+                    class="btn-secondary px-8 py-4 bg-white text-navy-900 rounded-full font-semibold text-lg border-2 border-navy-900 hover:bg-navy-900 hover:text-white transition-all transform hover:scale-105">
+                    List Your Service
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-navy-900 text-center mb-16">
+                Service Categories
+            </h2>
+            <!-- Categories Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-4">
+
+                <!-- 1. Accounting -->
+                <a href="browse.html?category=accounting"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-green-400/50 shadow-xl group cursor-pointer h-[320px]">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-green-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-2">Accounting</h3>
+                    <p class="text-gray-600 text-sm">Financial management & bookkeeping</p>
+                </a>
+
+                <!-- 2. Real Estate & Ancillary -->
+                <a href="browse.html?category=estate_ancillary"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-slate-400/50 shadow-xl group cursor-pointer h-[320px]">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-slate-400 to-gray-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-gray-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-2">Real Estate & Ancillary</h3>
+                    <p class="text-gray-600 text-sm">Office Space, Facilities & Cleaning</p>
+                </a>
+
+                <!-- 3. Fundraising -->
+                <a href="browse.html?category=fundraising"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-yellow-400/50 shadow-xl group cursor-pointer h-[320px]">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-yellow-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-2">Fundraising</h3>
+                    <p class="text-gray-600 text-sm">VCs & Investors</p>
+                </a>
+
+                <!-- 4. HR & Hiring -->
+                <a href="browse.html?category=hr"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-orange-400/50 shadow-xl group cursor-pointer h-[320px]">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-orange-400 to-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-2">HR & Hiring</h3>
+                    <p class="text-gray-600 text-sm">Recruitment & Payroll</p>
+                </a>
+
+                <!-- 5. IT Services -->
+                <a href="browse.html?category=it"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-purple-400/50 shadow-xl group cursor-pointer h-[320px]">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-purple-400 to-violet-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-purple-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-2">IT Services</h3>
+                    <p class="text-gray-600 text-sm">Tech & DevOps</p>
+                </a>
+
+                <!-- 6. Legal -->
+                <a href="browse.html?category=legal"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-blue-400/50 shadow-xl group cursor-pointer h-[320px]">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-2">Legal</h3>
+                    <p class="text-gray-600 text-sm">Contracts & IP</p>
+                </a>
+
+                <!-- 7. Marketing -->
+                <a href="browse.html?category=marketing"
+                    class="glass-card p-6 rounded-3xl flex flex-col items-center justify-center text-center transform transition-all duration-300 hover:scale-105 border-2 border-transparent hover:border-pink-400/50 shadow-xl group cursor-pointer h-[320px]">
+                    <div
+                        class="w-20 h-20 bg-gradient-to-br from-pink-400 to-rose-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-pink-500/30 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-2">Marketing</h3>
+                    <p class="text-gray-600 text-sm">Growth Strategy</p>
+                </a>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-navy-900 text-center mb-16">
+                Why Choose Startosphere?
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div class="feature-card text-center p-8">
+                    <div class="w-20 h-20 bg-navy-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-4">Vetted Professionals</h3>
+                    <p class="text-gray-600">All service providers are carefully reviewed and verified for quality.</p>
+                </div>
+
+                <div class="feature-card text-center p-8">
+                    <div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-4">Fast Connections</h3>
+                    <p class="text-gray-600">Quickly find and connect with the right experts for your needs.</p>
+                </div>
+
+                <div class="feature-card text-center p-8">
+                    <div class="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-navy-900 mb-4">Startup-Friendly</h3>
+                    <p class="text-gray-600">Providers who understand startup budgets and timelines.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center glass-card p-12 rounded-3xl">
+            <h2 class="text-4xl font-bold text-navy-900 mb-6">
+                Ready to Grow Your Startup?
+            </h2>
+            <p class="text-xl text-gray-600 mb-8">
+                Join hundreds of founders who have found their perfect service providers on Startosphere.
+            </p>
+            <a href="browse.html"
+                class="inline-block px-10 py-4 bg-navy-900 text-white rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-navy-900/30 transition-all transform hover:scale-105">
+                Get Started Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-gray-200 bg-white">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="text-2xl font-bold text-navy-900 mb-4">
+                Startosphere
+            </div>
+            <p class="text-gray-400 mb-6">
+                Connecting startups with the services they need to succeed.
+            </p>
+            <div class="flex justify-center space-x-6 text-gray-600">
+                <a href="index.html" class="hover:text-blue-600 transition-colors">Home</a>
+                <a href="browse.html" class="hover:text-blue-600 transition-colors">Browse</a>
+                <a href="submit.html" class="hover:text-blue-600 transition-colors">Submit Service</a>
+            </div>
+            <p class="text-gray-500 mt-8 text-sm">
+                © 2026 Startosphere. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>

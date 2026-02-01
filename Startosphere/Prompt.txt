@@ -1,0 +1,36 @@
+I want to build a simple, professional web platform that connects startup founders with service providers (accountants, lawyers, IT, marketing).
+
+Constraints:
+- No coding experience on my side
+- Use plain HTML, minimal JavaScript, and Tailwind CSS for styling
+- No React, no Next.js, no complex frameworks (for now)
+- Clean, modern, startup-style UI
+
+Please:
+1. Create the overall site structure
+2. Set up Tailwind CSS
+3. Create these pages:
+   - Homepage
+   - Browse Providers page
+   - Provider Profile page
+   - Submit Your Service page
+4. Use placeholder data for now
+5. Keep everything simple and readable
+
+Do NOT add:
+- Login systems
+- Payments
+- Messaging
+- Reviews
+
+Explain briefly what each file/page does.
+
+Review this project as a senior product designer
+
+Have the Provider Profile page to maximise trust and credibility.
+Emphasise:
+Who this provider is
+What they specialise in
+Who they are best suited for
+Improve layout so key information is visible without scrolling too much.
+Make the page feel professional, not promotional.

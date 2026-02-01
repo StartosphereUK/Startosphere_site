@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Providers - Startosphere</title>
+    <meta name="description"
+        content="Browse and discover trusted service providers for your startup including accountants, lawyers, IT specialists, and marketing experts.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="font-poppins bg-gradient-to-br from-slate-50 via-gray-100 to-slate-100 min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 md:h-24">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="logo.png" alt="Startosphere Logo" class="h-48 md:h-60">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="browse.html"
+                        class="nav-link text-navy-900 font-semibold hover:text-blue-600 transition-colors">Browse
+                        Providers</a>
+                    <a href="submit.html" class="nav-link text-gray-600 hover:text-blue-600 transition-colors">Submit
+                        Service</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-navy-900 font-semibold hover:text-blue-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-300 hover:bg-blue-50 rounded-md">Home</a>
+                <a href="browse.html" class="block px-3 py-2 text-white hover:bg-blue-50 rounded-md">Browse
+                    Providers</a>
+                <a href="submit.html" class="block px-3 py-2 text-gray-300 hover:bg-blue-50 rounded-md">Submit
+                    Service</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="pt-32 pb-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold text-navy-900 mb-6">
+                Browse Service Providers
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl">
+                Discover trusted professionals ready to help your startup succeed.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="pb-8 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="glass-card p-6 rounded-2xl">
+                <div class="flex flex-col md:flex-row gap-4">
+
+                    <!-- Category Filter -->
+                    <div class="flex-1">
+                        <label class="block text-sm font-semibold text-navy-900 mb-2">Category</label>
+                        <select id="category-filter"
+                            class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:border-blue-500 transition-colors">
+                            <option value="all">All Categories</option>
+                            <option value="accounting">Accounting</option>
+                            <option value="fundraising">Fundraising</option>
+                            <option value="hr">HR & Hiring</option>
+                            <option value="it">IT Services</option>
+                            <option value="legal">Legal</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="estate_ancillary">Real Estate & Ancillary</option>
+                        </select>
+                    </div>
+
+                    <!-- Search -->
+                    <div class="flex-1">
+                        <label class="block text-sm font-semibold text-navy-900 mb-2">Search</label>
+                        <input type="text" id="search-input" placeholder="Search providers..."
+                            class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors">
+                    </div>
+
+                    <!-- Sort -->
+                    <div class="flex-1">
+                        <label class="block text-sm font-semibold text-navy-900 mb-2">Sort By</label>
+                        <select id="sort-filter"
+                            class="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-navy-900 focus:outline-none focus:border-blue-500 transition-colors">
+                            <option value="featured">Featured</option>
+                            <option value="name">Name (A-Z)</option>
+                            <option value="newest">Newest First</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Providers Grid -->
+    <section class="pb-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div id="providers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="text-2xl font-bold bg-gradient-to-r text-navy-900 mb-4">
+                Startosphere
+            </div>
+            <p class="text-gray-400 mb-6">
+                Connecting startups with the services they need to succeed.
+            </p>
+            <div class="flex justify-center space-x-6 text-gray-400">
+                <a href="index.html" class="hover:text-purple-400 transition-colors">Home</a>
+                <a href="browse.html" class="hover:text-purple-400 transition-colors">Browse</a>
+                <a href="submit.html" class="hover:text-purple-400 transition-colors">Submit Service</a>
+            </div>
+            <p class="text-gray-500 mt-8 text-sm">
+                © 2026 Startosphere. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="providers.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

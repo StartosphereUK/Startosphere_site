@@ -1,0 +1,382 @@
+/* Custom Styles for Startosphere */
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Custom Colors */
+:root {
+    --navy-900: #2C3E50;
+    --navy-800: #34495E;
+}
+
+.text-navy-900 {
+    color: var(--navy-900);
+}
+
+.bg-navy-900 {
+    background-color: var(--navy-900);
+}
+
+.border-navy-900 {
+    border-color: var(--navy-900);
+}
+
+.hover\:text-navy-900:hover {
+    color: var(--navy-900);
+}
+
+.hover\:bg-navy-900:hover {
+    background-color: var(--navy-900);
+}
+
+.font-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Glassmorphism Effect */
+.glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(44, 62, 80, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Animations */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+}
+
+/* Category Cards Hover Effect */
+.category-card {
+    transition: all 0.3s ease;
+}
+
+.category-card:hover {
+    background: rgba(44, 62, 80, 0.08);
+    border-color: rgba(44, 62, 80, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Provider Cards */
+.provider-card {
+    transition: all 0.3s ease;
+}
+
+.provider-card:hover {
+    border-color: rgba(44, 62, 80, 0.3);
+    box-shadow: 0 20px 40px rgba(44, 62, 80, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Button Styles */
+.btn-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+}
+
+/* Feature Cards */
+.feature-card {
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Navigation Links */
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3B82F6;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Form Input Focus Effects */
+input:focus,
+textarea:focus,
+select:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: #2C3E50;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #2C3E50;
+    border-color: #2C3E50;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2C3E50;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #34495E;
+}
+
+/* Loading Animation for Images */
+img {
+    transition: opacity 0.3s ease;
+}
+
+img:not([src]) {
+    opacity: 0;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Gradient Text Animation */
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.bg-gradient-to-r {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+}
+
+/* Card Entrance Animation */
+@keyframes card-entrance {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.glass-card {
+    animation: card-entrance 0.6s ease-out;
+}
+
+/* Hover Glow Effect */
+.hover-glow {
+    transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+    filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5));
+}
+
+/* Star Rating Styling */
+.star-rating {
+    display: inline-flex;
+    gap: 2px;
+}
+
+/* Mobile Menu Animation */
+#mobile-menu {
+    transition: all 0.3s ease;
+}
+
+#mobile-menu.show {
+    display: block;
+    animation: slide-down 0.3s ease-out;
+}
+
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Success Message Animation */
+#success-message {
+    animation: fade-in 0.5s ease-out;
+}
+
+/* Pulse Animation for CTAs */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Gradient Border Animation */
+@keyframes border-glow {
+
+    0%,
+    100% {
+        border-color: rgba(139, 92, 246, 0.3);
+    }
+
+    50% {
+        border-color: rgba(236, 72, 153, 0.5);
+    }
+}
+
+.glass-card:hover {
+    animation: border-glow 2s ease-in-out infinite;
+}
+
+/* Text Selection */
+::selection {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #2C3E50;
+}
+
+/* Focus Visible for Accessibility */
+*:focus-visible {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+}
+
+/* Disabled State */
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Loading State */
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- Spiral Carousel 3D Styles --- */
+.spiral-wrapper {
+    perspective: 1200px;
+}
+
+.spiral-scene {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+}
+
+.spiral-carousel {
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+    /* "Creamy" Ease */
+}
+
+.spiral-item {
+    backface-visibility: visible;
+    transition: transform 0.3s ease;
+}
+
+.spiral-item:hover {
+    filter: brightness(1.1);
+    z-index: 10;
+}
