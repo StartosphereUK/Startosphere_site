@@ -183,36 +183,28 @@ if (document.getElementById('submit-form')) {
 
         // Function to upload logo to backend
         const uploadLogo = async (file) => {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = async (e) => {
-                    try {
-                        const apiUrl = 'https://startosphere-site.vercel.app/api/upload-logo';
+            return new Promise(async (resolve, reject) => {
+                try {
+                    const cloudinaryUrl = 'https://api.cloudinary.com/v1_1/dwozhkfte/image/upload';
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    formData.append('upload_preset', 'startosphere_logos');
 
-                        const response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                image: e.target.result,
-                                filename: file.name
-                            })
-                        });
+                    const response = await fetch(cloudinaryUrl, {
+                        method: 'POST',
+                        body: formData
+                    });
 
-                        const data = await response.json();
+                    const data = await response.json();
 
-                        if (data.success && data.url) {
-                            resolve(data.url);
-                        } else {
-                            reject(new Error(data.error || 'Upload failed'));
-                        }
-                    } catch (error) {
-                        reject(error);
+                    if (data.secure_url) {
+                        resolve(data.secure_url);
+                    } else {
+                        reject(new Error(data.error?.message || 'Upload failed'));
                     }
-                };
-                reader.onerror = () => reject(new Error('File read error'));
-                reader.readAsDataURL(file);
+                } catch (error) {
+                    reject(error);
+                }
             });
         };
 
