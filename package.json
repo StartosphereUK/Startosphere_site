@@ -1,6 +1,7 @@
 {
     "name": "startosphere",
     "version": "1.0.0",
+    "type": "module",
     "description": "Startosphere website with backend API",
     "scripts": {
         "start": "vercel dev",
