@@ -1,4 +1,5 @@
 // Startosphere - Minimal JavaScript for Interactivity
+// Force redeploy timestamp: 2026-04-04
 
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function () {
